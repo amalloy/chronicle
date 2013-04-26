@@ -1,0 +1,6 @@
+(defproject org.flatland/chronicle "0.1.0-SNAPSHOT"
+  :description "Turn a cron map into an infinite sequence of times."
+  :url "http://github.com/flatland/chronicle"
+  :license {:name "Eclipse Public License"
+            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :dependencies [[org.clojure/clojure "1.4.0"]])
