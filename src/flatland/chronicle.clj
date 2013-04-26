@@ -35,6 +35,7 @@
                   (time/minute time)))
 
 (defn times-for [spec start]
-  (for [time (periodic-seq (round-time start) (minutes 1))
-        :when (time-match? spec time)]
-    time))
+  (let [spec (make-spec spec)]
+    (for [time (periodic-seq (round-time start) (minutes 1))
+          :when (time-match? spec time)]
+      time)))
