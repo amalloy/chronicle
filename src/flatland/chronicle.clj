@@ -37,6 +37,7 @@
 
 (defn times-for [spec start]
   (let [spec (make-spec spec)]
-    (for [time (periodic-seq (round-time start) (minutes 1))
-          :when (time-match? spec time)]
-      time)))
+    (->> (for [time (periodic-seq (round-time start) (minutes 1))
+               :when (time-match? spec time)]
+           time)
+         (drop-while #(time/before? % start)))))
