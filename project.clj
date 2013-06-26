@@ -1,4 +1,4 @@
-(defproject org.flatland/chronicle "0.2.0"
+(defproject org.flatland/chronicle "0.2.1"
   :description "Turn a cron map into an infinite sequence of times."
   :url "http://github.com/flatland/chronicle"
   :license {:name "Eclipse Public License"
