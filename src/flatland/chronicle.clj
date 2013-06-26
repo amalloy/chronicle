@@ -1,6 +1,7 @@
 (ns flatland.chronicle
   (:require [clj-time.core :as time :refer [minutes]]
-            [clj-time.periodic :refer [periodic-seq]]))
+            [clj-time.periodic :refer [periodic-seq]])
+  (:import (org.joda.time DateTime Partial DateTimeFieldType)))
 
 (def extractors
   {:minute time/minute
@@ -27,12 +28,12 @@
           (for [[k v] extractors]
             (contains? (get spec k) (v time)))))
 
-(defn round-time [time]
-  (time/date-time (time/year time)
-                  (time/month time)
-                  (time/day time)
-                  (time/hour time)
-                  (time/minute time)))
+(defn round-time [^DateTime time]
+  (.withFields time (Partial.
+                     (into-array DateTimeFieldType
+                                 [(DateTimeFieldType/secondOfMinute)
+                                  (DateTimeFieldType/millisOfSecond)])
+                     (int-array [0 0]))))
 
 (defn times-for [spec start]
   (let [spec (make-spec spec)]
