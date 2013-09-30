@@ -35,7 +35,11 @@
                                   (DateTimeFieldType/millisOfSecond)])
                      (int-array [0 0]))))
 
-(defn times-for [spec start]
+(defn times-for
+  "Get all times starting at `start` that match the spec.
+   A spec is a map that represents something very similar
+   to a cron job. See default-spec for an example."
+  [spec start]
   (let [spec (make-spec spec)]
     (->> (for [time (periodic-seq (round-time start) (minutes 1))
                :when (time-match? spec time)]
