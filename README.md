@@ -2,7 +2,8 @@
 
 Chronicle is a dead simple library for getting an infinite sequence of times
 that match a certain specification. It is essentially an abstract version of
-cron, using Clojure maps to represent time specifications.
+cron, using Clojure maps to represent time specifications. Chronicle makes use
+of clj-time and Joda-time and returns Joda time objects.
 
 ## Usage
 
